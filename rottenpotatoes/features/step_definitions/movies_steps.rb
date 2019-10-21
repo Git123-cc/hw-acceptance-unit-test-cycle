@@ -24,6 +24,11 @@ Then /I should see all the movies/ do
   end
 end
 
-Then /the director of (.*) should be (.*)/ do |movie, director|
-  pending
+#Then /the director of (.*) should be (.*)/ do |movieIn, directorIn|
+#    movie = Movie.find_by_title(movieIn)
+#    expect(movie.director).to eq directorIn
+#end
+
+Then(/^the director of "([^"]*)" should be "([^"]*)"$/) do |movie_title, director_title|
+  Movie.find_by_title(movie_title).director == director_title
 end
